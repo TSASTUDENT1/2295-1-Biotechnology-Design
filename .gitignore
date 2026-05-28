@@ -1,0 +1,28 @@
+# Model binaries
+*.hef
+models/*.hef
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+.env
+*.log
+venv/
+
+# macOS / Windows
+.DS_Store
+desktop.ini
+Thumbs.db
+
+# Temp files
+~$*
+.tmp.driveupload/
+.gdriveignore
+
+# TypeScript build artifacts
+ui/tsconfig.tsbuildinfo
+ui/node_modules/
+ui/dist/
+ui/.vite/

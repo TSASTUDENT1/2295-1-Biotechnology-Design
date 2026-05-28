@@ -1,0 +1,20 @@
+[Unit]
+Description=ExCELLsis Cellular Bioanalysis System
+After=graphical.target
+Wants=graphical.target
+
+[Service]
+Type=simple
+User=pi
+WorkingDirectory=/home/pi/excellsis
+ExecStart=/usr/bin/python3 /home/pi/excellsis/src/main.py
+Environment=DISPLAY=:0
+Environment=PYTHONPATH=/home/pi/excellsis/src
+Environment=XDG_RUNTIME_DIR=/run/user/1000
+Restart=always
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=graphical.target

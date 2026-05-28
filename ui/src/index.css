@@ -1,0 +1,87 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background: #03070d;
+  color: #e2e8f0;
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow: hidden;
+}
+
+::selection {
+  background: rgba(34, 211, 238, 0.35);
+  color: #ecfeff;
+}
+
+/* Subtle scrollbar for any internal scroll areas (detection log) */
+.scroll-bio::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.scroll-bio::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.02);
+}
+.scroll-bio::-webkit-scrollbar-thumb {
+  background: rgba(34, 211, 238, 0.25);
+  border-radius: 999px;
+}
+.scroll-bio::-webkit-scrollbar-thumb:hover {
+  background: rgba(34, 211, 238, 0.5);
+}
+
+@layer components {
+  .panel {
+    @apply rounded-2xl border border-bio-border bg-bio-panel/80 backdrop-blur-sm;
+    background-image: linear-gradient(
+      180deg,
+      rgba(34, 211, 238, 0.05) 0%,
+      rgba(10, 19, 32, 0) 60%
+    );
+  }
+  .panel-header {
+    @apply flex items-center justify-between px-4 py-2.5 border-b border-bio-border/70;
+  }
+  .panel-title {
+    @apply text-[11px] font-semibold tracking-[0.18em] uppercase text-slate-400;
+  }
+  .mono {
+    @apply font-mono tabular-nums;
+  }
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-full px-2 py-0.5 text-[10px] font-semibold tracking-wider uppercase;
+  }
+  .glow-text {
+    text-shadow: 0 0 10px currentColor, 0 0 2px currentColor;
+  }
+}
+
+/* Animated grid backdrop for ambient depth */
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(34, 211, 238, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(34, 211, 238, 0.06) 1px, transparent 1px);
+  background-size: 32px 32px;
+  background-position: -1px -1px;
+}
+
+/* Radial glow used behind hero feed */
+.radial-glow {
+  background: radial-gradient(
+    ellipse at 50% 0%,
+    rgba(34, 211, 238, 0.18) 0%,
+    rgba(3, 7, 13, 0) 60%
+  );
+}
