@@ -45,9 +45,9 @@ Width and depth are confirmed. Height depends on the optic box — see Section 1
 
 | Part | Material | Thickness |
 |------|----------|-----------|
-| Main shell (6 outer panels) | Clear cast acrylic | **6 mm** |
-| Optic box ceiling panel | Clear cast acrylic | **6 mm** |
-| Optic box back wall panel | Clear cast acrylic | **6 mm** |
+| Main shell (6 outer panels) | Clear cast acrylic | **3 mm** |
+| Optic box ceiling panel | Clear cast acrylic | **3 mm** |
+| Optic box back wall panel | Clear cast acrylic | **3 mm** |
 | Optic box door | Fiberglass sheet | **3 mm** |
 | Control strip overlay | Black cast acrylic | **3 mm** |
 | Camera mount, Pi standoff brackets | PLA 3D print | solid |
@@ -57,22 +57,22 @@ Width and depth are confirmed. Height depends on the optic box — see Section 1
 ## 3. Depth Breakdown (Front → Back)
 
 ```
-FRONT                                                         BACK
-  │ panel │←────── optic box ──────→│←─ Pi+HAT ─→│← gap ──→│panel│
-  │  6mm  │         76 mm           │   ~50 mm   │  ~63mm  │ 6mm │
-  └───────┴─────────────────────────┴────────────┴─────────┴─────┘
-  ←──────────────────────── 203 mm total ─────────────────────────→
+FRONT                                                    BACK
+  │ panel │←────── optic box ──────→│←── large air gap ──→│panel│
+  │  3mm  │         80 mm           │      ~114 mm         │ 3mm │
+  └───────┴─────────────────────────┴──────────────────────┴─────┘
+  ←──────────────────────── 203 mm total ──────────────────────────→
 ```
 
 | Zone | Depth | Notes |
 |------|-------|-------|
-| Front panel | 6 mm | Clear cast acrylic |
-| Optic box interior | 76 mm (3") | Camera looks down into this |
-| Optic box back wall + Pi standoffs | ~6 mm | Included within zones on each side |
-| Pi + Hailo HAT stack | ~50 mm (2") | Mounted on rear face of optic box back wall |
-| Air gap | ~63 mm (~2.5") | Wiring channel, Pi fan exhaust path |
-| Back panel | 6 mm | Clear cast acrylic |
+| Front panel | 3 mm | Clear cast acrylic |
+| Optic box interior | 80 mm | Camera looks down into this |
+| Air gap (behind optic box) | ~114 mm | Wiring channel, airflow path |
+| Back panel | 3 mm | Clear cast acrylic |
 | **Total** | **~203 mm** | |
+
+> **Pi + HAT location:** Pi 5 + Hailo HAT mount on the **rear face of the display module** in the upper interior zone (behind the screen, ~61mm from the front panel inner face). This is a separate zone from the optic box depth breakdown above.
 
 ---
 
@@ -82,41 +82,40 @@ Scale 1 char ≈ 5 mm. Left = back face, right = front face.
 
 ```
 BACK                                                       FRONT
-                                                              │ ← front panel (6mm)
+                                                              │ ← front panel (3mm)
 ┌─────────────────────────────────────────────────────────── ┤
 │                                               ░░░░░░░░░░░  │ ← overhang dust lip (~6mm)
-│                                               ┌──────────┐ │ Y= DISP_TOP
+│                                    [Pi+HAT]   ┌──────────┐ │ Y= DISP_TOP
 │                              [camera body]    │          │ │
 │                              [ adapter  ]     │  screen  │ │ ← display module inset
 │                              [  tube ↓  ]     │  module  │ │   239mm W × 147mm H × 10.8mm D
-│                              [  tube ↓  ]     │  147mm   │ │   cutout ≈ 222mm × 140mm
+│                              [  tube ↓  ]     │  147mm   │ │   cutout ≈ 222mm × 136mm
 │                              [  tube ↓  ]     │          │ │
 │                                               └──────────┘ │ Y= DISP_BOT
 │                                               ░░░░░░░░░░░  │ ← underhang dust lip (~6mm)
 │                                               ░ controls ░ │ ← control strip + 3mm overlay
-├────────────┬──────────────────────────────────────────────┤ ← optic box ceiling (6mm)
-│            │  ┌─────────────────────────────────────────  ┤ Y= OPT_TOP
-│  air gap   │  │                                           │
-│  ~63 mm    │  │   optic box                               │ ← [fiberglass door]
-│            │  │   objective + stage + illuminator         │   side-hinged right edge
-│ [Pi+HAT]   │  │                                           │
-│ on back    │  └─────────────────────────────────────────  ┤ Y= TOTAL_H − 6mm
-└────────────┴──────────────────────────────────────────────┘ ← bottom panel (6mm)
+├─────────────────────────────────────────────────────────── ┤ ← optic box ceiling (3mm)
+│  large air gap (~111mm)   │  ┌───────────────────────────  ┤ Y= OPT_TOP
+│                           │  │                             │
+│                           │  │   optic box                 │ ← [fiberglass door]
+│                           │  │   objective + illuminator   │   side-hinged right edge
+│                           │  │                             │
+│                           │  └───────────────────────────  ┤ Y= TOTAL_H − 3mm
+└───────────────────────────┴────────────────────────────────┘ ← bottom panel (3mm)
 
-←gap→  ←Pi→          ←─────── optic box 76mm ────────────→
-~63mm  ~50mm
+←───── air gap ~111mm ─────→←── optic box 80mm ────────────→
 ←──────────────────────── 203 mm total ────────────────────→
 ```
 
 **Key layout rules:**
 - Screen module sits behind the front panel. The acrylic border around the cutout (≈6mm on all sides) forms the dust lip. No separate bezel strip needed.
-- Camera + adapter tube is inside the main box, above the optic box ceiling. Tube descends through the ceiling aperture.
-- Pi + Hailo HAT mounts on the **rear face** of the optic box back wall, fan facing toward the back panel.
-- Air gap (~63mm) is the wiring/airflow channel. Pi fan exhausts toward back panel vents.
+- Pi + Hailo HAT mounts on the **rear face of the display module**, in the upper interior zone. Pi is ~61mm from the front panel inner face (10.8mm display + 50mm Pi+HAT stack).
+- Camera + adapter tube is inside the main box, above the optic box ceiling. Tube descends through the ceiling aperture into the optic chamber.
+- Large air gap (~111mm behind optic box) is the wiring/airflow channel.
 
 ---
 
-## 5. Front Panel  `254 mm W × TOTAL_H mm H × 6 mm thick`
+## 5. Front Panel  `254 mm W × TOTAL_H mm H × 3 mm thick`
 
 ### 5a. Normal View (face-on)
 
@@ -143,10 +142,10 @@ BACK                                                       FRONT
   ├──────────────────────────────────────────────────┤ Y= CTRL_BOT mm
   │       ┌──────────────────────────────────┐       │ Y= OPT_TOP mm
   │       │                                  │       │
-  │       │   optic box door opening         │       │   OPT_BOX_W mm × OPT_BOX_H mm
+  │       │   optic box door opening         │       │   OPT_BOX_W mm × 84 mm
   │       │   (fiberglass door sits here)    │       │   centred: X = (254 − OPT_BOX_W) / 2
   │       │                                  │       │
-  │       └──────────────────────────────────┘       │ Y= TOTAL_H − 6 mm
+  │       └──────────────────────────────────┘       │ Y= TOTAL_H − 3 mm
   └──────────────────────────────────────────────────┘ Y= TOTAL_H mm
 ```
 
@@ -160,7 +159,7 @@ BACK                                                       FRONT
 | ON/OFF button hole | Through-cut | ~98 | CTRL_CTR mm | — | BTN_DIA mm | Button datasheet |
 | Chamber light button hole | Through-cut | ~156 | CTRL_CTR mm | — | BTN_DIA mm | Button datasheet |
 | Mode cycle button hole | Through-cut | ~214 | CTRL_CTR mm | — | BTN_DIA mm | Button datasheet |
-| Optic box door opening | Through-cut | 127 | OPT_TOP mm | OPT_BOX_W mm | OPT_BOX_H mm | Derived — Section 13 |
+| Optic box door opening | Through-cut | 127 | OPT_TOP mm | OPT_BOX_W mm | 84 mm | Derived — Section 13 |
 
 > **Screen cutout note:** Cutout is ~222mm × ~140mm (active area 217×136mm + ~2.5mm margin each side). This is smaller than the module (239×147mm), so the module bezel rests on the panel inner face — no extra mounting hardware needed on the front face. Confirm final cutout size against the physical display before sending to Glowforge.
 >
@@ -170,7 +169,7 @@ BACK                                                       FRONT
 
 ---
 
-## 6. Back Panel  `254 mm W × TOTAL_H mm H × 6 mm thick`
+## 6. Back Panel  `254 mm W × TOTAL_H mm H × 3 mm thick`
 
 ### 6a. Normal View
 
@@ -202,7 +201,7 @@ BACK                                                       FRONT
 
 ---
 
-## 7. Left Side Panel  `203 mm D × TOTAL_H mm H × 6 mm thick`
+## 7. Left Side Panel  `203 mm D × TOTAL_H mm H × 3 mm thick`
 
 ```
   Z →  0 (front face)                     203 mm (back face)
@@ -215,11 +214,11 @@ BACK                                                       FRONT
 
 Internal face carries PLA cable clips. No external cutouts.
 
-> **Optic box side wall tab:** At the lower portion of the internal face, a 6mm acrylic strip runs from Z=6mm to Z=82mm (front panel inner face to optic box back wall outer face), spanning OPT_BOX_H mm in height. This closes the left side of the optic box alcove. Laser-cut as a separate interior tab and glue in.
+> **Optic box side wall tab:** At the lower portion of the internal face, a 3mm acrylic strip runs from Z=3mm to Z=83mm (front panel inner face to optic box back wall outer face), spanning 84 mm in height. This closes the left side of the optic box alcove. Laser-cut as a separate interior tab and glue in.
 
 ---
 
-## 8. Right Side Panel  `203 mm D × TOTAL_H mm H × 6 mm thick`
+## 8. Right Side Panel  `203 mm D × TOTAL_H mm H × 3 mm thick`
 
 ```
   Z →  0 (front face)       METER_Z           203 mm (back face)
@@ -240,7 +239,7 @@ Same optic box side wall tab note as left panel.
 
 ---
 
-## 9. Top Panel  `254 mm W × 203 mm D × 6 mm thick`
+## 9. Top Panel  `254 mm W × 203 mm D × 3 mm thick`
 
 ```
   Z →  0 (front)                           203 mm (back)
@@ -257,11 +256,11 @@ Same optic box side wall tab note as left panel.
 |---------|------|----------|-------------|---|---|
 | Active cooler vent | Through-cut | 127 | FAN_Z mm | FAN_W mm | FAN_H mm |
 
-> Pi is in the air gap zone at Z ≈ 76+6+50 = ~132mm from front face. FAN_Z ≈ 125–135mm. Measure Pi + HAT stack position after assembly to confirm.
+> Pi is behind the display module at Z ≈ 10.8+50 = ~61mm from front panel inner face (~67mm from front face outer). FAN_Z ≈ 55–65mm. Measure Pi + HAT stack position after assembly to confirm.
 
 ---
 
-## 10. Bottom Panel  `254 mm W × 203 mm D × 6 mm thick`
+## 10. Bottom Panel  `254 mm W × 203 mm D × 3 mm thick`
 
 ```
   Z →  0 (front)                           203 mm (back)
@@ -281,28 +280,28 @@ Same optic box side wall tab note as left panel.
 
 ## 11. Optic Box Sub-Enclosure
 
-The optic box is an alcove formed at the lower-front of the main box. It shares the main box front panel (door opening) and bottom panel (floor). It is enclosed by four internal panels cut from 6mm clear acrylic.
+The optic box is an alcove formed at the lower-front of the main box. It shares the main box front panel (door opening) and bottom panel (floor). It is enclosed by four internal panels cut from 3mm clear acrylic.
 
 ### 11a. Optic Box Dimensions
 
 | Dimension | Value | Notes |
 |-----------|-------|-------|
 | Width (OPT_BOX_W) | ~152 mm | 60% of 254mm — centred on front panel |
-| Depth | 76 mm (3") | Front panel inner face → optic box back wall outer face |
-| Height (OPT_BOX_H) | OPT_BOX_H mm | **Placeholder — see Section 13** |
+| Depth | 80 mm | Front panel inner face → optic box back wall outer face |
+| Height (84) | 84 mm | **Placeholder — see Section 13** |
 | Left edge from left panel | ~51 mm | (254 − 152) / 2 = 51mm |
 
-### 11b. Optic Box Ceiling Panel  `152 mm W × 76 mm D × 6 mm thick`
+### 11b. Optic Box Ceiling Panel  `152 mm W × 80 mm D × 3 mm thick`
 
-Horizontal panel at Y = TOTAL_H − 6 (bottom) − OPT_BOX_H from top. Glued to left/right inner side walls of optic box and to the front panel inner face.
+Horizontal panel at Y = TOTAL_H − 6 (bottom) − 84 from top. Glued to left/right inner side walls of optic box and to the front panel inner face.
 
 ```
-  Z →  0 (front)         38          76 mm (back wall)
+  Z →  0 (front)         40          80 mm (back wall)
   ┌──────────────────────────────────────────────┐ X=  0 (left edge of optic box)
   │                                              │
   │              ╭──────────╮                   │
   │             ( APERT_DIA  )                  │  ← adapter tube aperture
-  │              ╰──────────╯                   │    centred at (76mm, 38mm)
+  │              ╰──────────╯                   │    centred at (76mm, 40mm)
   │                                              │
   └──────────────────────────────────────────────┘ X= 152 mm
 ```
@@ -313,13 +312,13 @@ Horizontal panel at Y = TOTAL_H − 6 (bottom) − OPT_BOX_H from top. Glued to 
 
 > APERT_DIA = outer diameter of RMS-to-C-mount adapter tube + 3mm clearance.
 
-### 11c. Optic Box Back Wall  `152 mm W × OPT_BOX_H mm H × 6 mm thick`
+### 11c. Optic Box Back Wall  `152 mm W × 84 mm H × 3 mm thick`
 
-Vertical panel at Z = 76mm from front panel inner face. Pi + Hailo HAT mounts on the **rear face** of this panel (facing toward the main box back panel). Camera adapter tube passes in front of this wall inside the optic box.
+Vertical panel at Z = 80mm from front panel inner face. Camera adapter tube passes in front of this wall inside the optic box. No Pi mounting on this panel — Pi is on the display rear face.
 
 ---
 
-## 12. Fiberglass Door  `OPT_BOX_W mm W × OPT_BOX_H mm H × 3 mm thick`
+## 12. Fiberglass Door  `OPT_BOX_W mm W × 84 mm H × 3 mm thick`
 
 Covers the optic box front opening. **Hinge on right edge** (door swings left when viewed from front). Neodymium magnet catch on left edge.
 
@@ -337,7 +336,7 @@ Covers the optic box front opening. **Hinge on right edge** (door swings left wh
   │                                            │    centred at (OPT_BOX_W/2, RING_Y mm)
   │                                            │
   │  [magnet]               [hinge]  [hinge]  │
-  └────────────────────────────────────────────┘ Y= OPT_BOX_H mm
+  └────────────────────────────────────────────┘ Y= 84 mm
 ```
 
 | Feature | Type | X centre | Y | Size |
@@ -345,7 +344,7 @@ Covers the optic box front opening. **Hinge on right edge** (door swings left wh
 | "OPTIC CHAMBER" | Engrave | OPT_BOX_W/2 | 10 | text |
 | LED ring window | Through-cut | OPT_BOX_W/2 | RING_Y mm | ∅ RING_W mm |
 | Hinge × 2 | Surface-mount | OPT_BOX_W (right edge) | HINGE_Y1, HINGE_Y2 | **measure hinge** |
-| Magnet recess | Pocket | 10 | OPT_BOX_H/2 | MAG_DIA mm |
+| Magnet recess | Pocket | 10 | 42 | MAG_DIA mm |
 
 > **No slide slot.** Open the door to place the slide on the stage, then close. Avoids slot alignment tolerance issues and keeps the optic box sealed when not in use.
 >
@@ -358,27 +357,27 @@ Covers the optic box front opening. **Hinge on right edge** (door swings left wh
 ### 13a. Front Face Zone Heights (top → bottom)
 
 ```
-TOTAL_H  =   6 mm   (top panel)
+TOTAL_H  =   3 mm   (top panel)
            + ~15 mm  (branding strip)
            + ~6 mm   (overhang dust lip above screen)
            + 147 mm  (display module height — confirmed from Waveshare spec)
            + ~6 mm   (underhang dust lip below screen)
            + ~30 mm  (control strip zone including 3mm overlay)
-           + OPT_BOX_H mm  (optic box door opening)
-           + 6 mm   (bottom panel)
+           + 84 mm  (optic box door opening)
+           + 3 mm   (bottom panel)
            ─────────────────────────────────
-           = 216 mm + OPT_BOX_H mm
+           = 210 mm + 84 mm
 ```
 
-| TOTAL_H target | Max OPT_BOX_H |
+| TOTAL_H target | Max 84 |
 |----------------|---------------|
-| 254 mm (10.0") | 38 mm — very tight, only feasible with very short optics |
-| 280 mm (11.0") | 64 mm — achievable with compact objective + stage |
-| 305 mm (12.0") | 89 mm — comfortable for standard 40× DIN + stage + illuminator |
+| 254 mm (10.0") | 44 mm — very tight, only feasible with very short optics |
+| 280 mm (11.0") | 70 mm — achievable with compact objective + stage |
+| 305 mm (12.0") | 95 mm — comfortable for standard 40× DIN + stage + illuminator |
 
 ### 13b. Optical Components to Measure
 
-Fill in these values when parts arrive. They determine OPT_BOX_H.
+Fill in these values when parts arrive. They determine 84.
 
 | Variable | What to measure | On which part |
 |----------|----------------|---------------|
@@ -390,13 +389,13 @@ Fill in these values when parts arrive. They determine OPT_BOX_H.
 | APERT_DIA | Adapter tube outer diameter + 3mm | Adapter from BOM |
 | RING_W | WS2812B ring outer diameter + 5mm | Ring from BOM |
 
-### 13c. Minimum OPT_BOX_H Formula
+### 13c. Minimum 84 Formula
 
 ```
-OPT_BOX_H = ADAP_BELOW + OBJ_L + OBJ_WD + 1mm (slide) + STAGE_H + 5mm (gap) + ILLUM_H + 5mm (margin)
+84 = ADAP_BELOW + OBJ_L + OBJ_WD + 1mm (slide) + STAGE_H + 5mm (gap) + ILLUM_H + 5mm (margin)
 ```
 
-Minimise ADAP_BELOW (keep as much of the adapter tube above the ceiling as possible) to reduce OPT_BOX_H and keep TOTAL_H under 305mm.
+Minimise ADAP_BELOW (keep as much of the adapter tube above the ceiling as possible) to reduce 84 and keep TOTAL_H under 305mm.
 
 ---
 
@@ -419,12 +418,12 @@ The module sits behind the front panel with its bezel resting on the panel inner
 ## 15. Assembly Notes
 
 1. **Slot-and-tab kerf offset:** 0.1 mm outward on all cut paths for Glowforge.
-2. **Optic box first:** Build and test the optic box sub-assembly (ceiling + back wall + side walls + door hinge) before assembling the main box around it. Confirm OPT_BOX_H from measured optical column before cutting.
+2. **Optic box first:** Build and test the optic box sub-assembly (ceiling + back wall + side walls + door hinge) before assembling the main box around it. Confirm 84 from measured optical column before cutting.
 3. **Screen mounting:** Cut front panel. Test-fit display module before gluing anything. Confirm cutout size (~222×140mm) against physical display — adjust by 1–2mm if needed before final cut.
 4. **Adapter tube aperture:** Measure adapter tube OD before cutting ceiling panel. APERT_DIA = OD + 3mm.
 5. **Door hinge:** Surface-mount hinges on right edge of door and right edge of optic box opening. Two hinges, evenly spaced vertically. Neodymium magnet catch recessed into left edge of door; matching recess in front panel.
-6. **Pi + HAT mounting:** PLA standoff brackets printed and screwed to rear face of optic box back wall. Pi mounted on standoffs with ~5mm gap to acrylic. Fan faces toward main box back panel. Confirm that Pi + HAT stack depth (~50mm) + standoffs clears the optic box back wall and fits within the 63mm air gap.
+6. **Pi + HAT mounting:** PLA standoff brackets printed and screwed to rear face of display module. Pi mounted on standoffs ~5mm behind the display. Fan faces toward back panel. Pi + HAT stack (~50mm deep) sits at Z ≈ 11–61mm from front panel inner face.
 7. **Back panel Pi exhaust vents:** Position exhaust vent slots directly behind Pi fan centre. Measure Pi fan Z position after assembly and mark the back panel before drilling / laser-cutting.
-8. **Top panel fan vent:** Pi active cooler is at approximately Z=125–135mm from front face. Place top panel vent directly above it. Measure exact position after Pi is mounted.
+8. **Top panel fan vent:** Pi active cooler is at approximately Z=55–65mm from front face (directly behind display module). Place top panel vent directly above it. Measure exact position after Pi is mounted.
 9. **Fiberglass door:** Glowforge-cut fiberglass sheet. Wear a mask when handling. Sand all cut edges lightly. Use dedicated Glowforge fiberglass settings — do not use standard acrylic settings.
 10. **Drilling if needed:** Step-drill, masking tape both faces, wood backing block, 300–500 RPM. Test on scrap material first.
