@@ -13,7 +13,7 @@ Runs fully offline on a Raspberry Pi 5 + Hailo-10H NPU. Detects and classifies c
 | SBC | Raspberry Pi 5 (16GB) |
 | NPU | Hailo-10H AI HAT+ 2 (40 TOPS INT4) via PCIe |
 | Camera | Arducam 12.3MP IMX477 HQ (CSI) |
-| Display | Waveshare 10.1" 1280×800 HDMI IPS |
+| Display | Waveshare 10.1-DSI-TOUCH-A 1280×800 IPS (22-pin DSI) |
 | LED ring | WS2812B 40-LED RGB (GPIO 18) |
 | Status LED | RGB LED (GPIO 23=R, 24=G, 25=B) |
 | Button | Momentary chamber light toggle (GPIO 17) |
@@ -111,10 +111,29 @@ excellsis/
 ├── assets/fonts/         # UI fonts
 ├── systemd/
 │   └── excellsis.service
-├── docs/                 # ExCELLsis_Project_Summary.docx
+├── docs/                 # reference docs
+├── ExCELLsis_Master_Document.docx  # full BOM, schedule, portfolio
+├── DIMENSIONS.md         # enclosure panel dimensions + cutout coords
 ├── requirements.txt
 └── README.md
 ```
+
+---
+
+## Enclosure
+
+| Property | Value |
+|----------|-------|
+| Outer dimensions | 254 mm W × 300 mm H × 203 mm D |
+| Shell material | 3 mm clear cast acrylic (Glowforge laser cut) |
+| Accents | 3 mm black cast acrylic |
+| Optic box | 152 mm W × 84 mm H × 80 mm D, lower-front alcove |
+| Optic box door | 3 mm fiberglass (FR4), side-hinged, magnet catch |
+| Optical column | 40× RMS objective → 160 mm tube → Arducam (12 mm OD tube, 3D printed) |
+| Display mount | Inset behind front panel cutout (222 × 136 mm), Pi + HAT on display rear face |
+| Battery compartment | Left panel, 133 × 67 mm door, 2×2 OVONIC 3S 8000 mAh packs |
+
+See `DIMENSIONS.md` for full panel coordinates, cutout positions, and joint specs.
 
 ---
 
